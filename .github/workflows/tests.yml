@@ -28,6 +28,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List repository files
+        run: ls -R
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -36,8 +39,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r geometric_lib/req
-
+          pip install -r $GITHUB_WORKSPACE/geometric_lib/req.txt
 
       - name: Run tests
         run: python -m unittest discover -s tests -v

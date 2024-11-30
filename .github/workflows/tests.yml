@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r geometric_lib/req.txt
+          pip install -r geometric_lib/req
 
 
       - name: Run tests

@@ -1,0 +1,53 @@
+name: Run Tests and Lint
+
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+    branches:
+      - main
+      - release
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display User Info
+        env:
+          FULL_NAME: ${{ secrets.FULL_NAME }}
+          GROUP_NUMBER: ${{ secrets.GROUP_NUMBER }}
+        run: |
+          echo "Full Name: $FULL_NAME"
+          echo "Group: $GROUP_NUMBER"
+          echo "GitHub Username: ${{ github.actor }}"
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: List repository files
+        run: ls -R
+
+      - name: Find requirements file
+        run: find . -name "req.txt"
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r req.txt  # Файл находится в корне репозитория
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics

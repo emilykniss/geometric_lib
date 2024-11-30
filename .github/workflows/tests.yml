@@ -29,10 +29,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: List repository files
-        run: ls -R  # Это выведет структуру файлов
+        run: ls -R
 
       - name: Find requirements file
-        run: find . -name "req.txt"  # Это найдет файл req.txt в репозитории
+        run: find . -name "req.txt"
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r geometric_lib/req.txt  # Убедитесь, что путь правильный
+          pip install -r req.txt  # Файл находится в корне репозитория
 
       - name: Run tests
         run: python -m unittest discover -s tests -v

@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r "geometric_lib/requirements.txt"
+          pip install -r "C:\Users\emily\OneDrive\Desktop\папка Мили\Университет\направления\ИСРПО\1 курс\1 семестр\лаба № 4\решение\ИСРПО лаба 4\geometric_lib\requirements.txt"
 
       - name: Run tests
         run: python -m unittest discover -s tests -v

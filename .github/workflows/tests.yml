@@ -20,7 +20,7 @@ jobs:
         env:
           FULL_NAME: ${{ secrets.FULL_NAME }}
           GROUP_NUMBER: ${{ secrets.GROUP_NUMBER }}
-        run: echo 'Full Name: $FULL_NAME, Group: $GROUP_NUMBER, GitHub Username: ${{ github.actor }}'
+        run: echo "Full Name: $FULL_NAME, Group: $GROUP_NUMBER, GitHub Username: ${{ github.actor }}"
 
       - name: Checkout code
         uses: actions/checkout@v3
@@ -42,3 +42,4 @@ jobs:
         run: |
           pip install flake8
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+

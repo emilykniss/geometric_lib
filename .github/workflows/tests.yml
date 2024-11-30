@@ -20,7 +20,11 @@ jobs:
         env:
           FULL_NAME: ${{ secrets.FULL_NAME }}
           GROUP_NUMBER: ${{ secrets.GROUP_NUMBER }}
-        run: echo 'Full Name: $FULL_NAME, Group: $GROUP_NUMBER, GitHub Username: ${{ github.actor }}'
+        run: |
+  	  echo "Full Name: $FULL_NAME"
+  	  echo "Group: $GROUP_NUMBER"
+ 	  echo "GitHub Username: ${{ github.actor }}"
+
 
       - name: Checkout code
         uses: actions/checkout@v3
